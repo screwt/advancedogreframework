@@ -116,14 +116,14 @@ bool GameState::keyPressed(const OIS::KeyEvent &keyEventRef)
     {
         if(OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_S))
         {
-            OgreBites::SelectMenu* pMenu = (OgreBites::SelectMenu*)OgreFramework::getSingletonPtr()->m_pTrayMgr->getWidget("ChatModeSelMenu");
+            OgreBites::SelectMenu* pMenu = (OgreBites::SelectMenu*)OgreFramework::getSingletonPtr()->m_pTrayMgr->getWidget("DisplayModeSelMenu");
             if(pMenu->getSelectionIndex() + 1 < (int)pMenu->getNumItems())
                 pMenu->selectItem(pMenu->getSelectionIndex() + 1);
         }
 
         if(OgreFramework::getSingletonPtr()->m_pKeyboard->isKeyDown(OIS::KC_W))
         {
-            OgreBites::SelectMenu* pMenu = (OgreBites::SelectMenu*)OgreFramework::getSingletonPtr()->m_pTrayMgr->getWidget("ChatModeSelMenu");
+            OgreBites::SelectMenu* pMenu = (OgreBites::SelectMenu*)OgreFramework::getSingletonPtr()->m_pTrayMgr->getWidget("DisplayModeSelMenu");
             if(pMenu->getSelectionIndex() - 1 >= 0)
                 pMenu->selectItem(pMenu->getSelectionIndex() - 1);
         }
