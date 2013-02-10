@@ -26,18 +26,19 @@ created by:
 An out-of-the-box running advanced framework of an Ogre application, offering:
 
     * Ogre initialization
-    * game/application state framework,
+    * game/application state framework
     * custom render loop
     * DotScene / XML scene loading
-    * different keyboard input modes
+    * different keyboard input modes (buffered vs. unbuffered)
     * user interface
     * in-code material manipulations 
+    * ray scene queries with query masks
 
 The framework is explained in the Ogre wiki: 
 http://ogre3d.org/tikiwiki/Advanced+Ogre+Framework
 
 Please post all issues and questions here: 
-http://www.ogre3d.org/forums/viewtopic.php?f=5&t=51994#p352550
+http://www.ogre3d.org/forums/viewtopic.php?f=5&t=51994
 
 ==============================================================================
 
