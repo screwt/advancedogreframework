@@ -23,6 +23,8 @@ void MenuState::enter()
     m_pSceneMgr = OgreFramework::getSingletonPtr()->m_pRoot->createSceneManager(ST_GENERIC, "MenuSceneMgr");
     m_pSceneMgr->setAmbientLight(Ogre::ColourValue(0.7f, 0.7f, 0.7f));
 
+    m_pSceneMgr->addRenderQueueListener(OgreFramework::getSingletonPtr()->m_pOverlaySystem);
+
     m_pCamera = m_pSceneMgr->createCamera("MenuCam");
     m_pCamera->setPosition(Vector3(0, 25, -50));
     m_pCamera->lookAt(Vector3(0, 0, 0));

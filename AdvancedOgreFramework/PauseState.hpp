@@ -33,8 +33,8 @@ public:
     void update(double timeSinceLastFrame);
 
 private:
-    bool m_bQuit;
-    bool m_bQuestionActive;
+    bool                        m_bQuit;
+    bool                        m_bQuestionActive;
 };
 
 //|||||||||||||||||||||||||||||||||||||||||||||||

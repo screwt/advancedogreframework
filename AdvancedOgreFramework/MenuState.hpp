@@ -32,7 +32,7 @@ public:
 	void update(double timeSinceLastFrame);
 
 private:
-	bool m_bQuit;
+	bool                        m_bQuit;
 };
 
 //|||||||||||||||||||||||||||||||||||||||||||||||

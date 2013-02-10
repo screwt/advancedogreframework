@@ -56,6 +56,8 @@ bool OgreFramework::initOgre(Ogre::String wndTitle, OIS::KeyListener *pKeyListen
 
     m_pViewport->setCamera(0);
 
+    m_pOverlaySystem = new Ogre::OverlaySystem();
+
     size_t hWnd = 0;
     OIS::ParamList paramList;
     m_pRenderWnd->getCustomAttribute("WINDOW", &hWnd);
@@ -100,7 +102,10 @@ bool OgreFramework::initOgre(Ogre::String wndTitle, OIS::KeyListener *pKeyListen
     Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
     Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 
-    m_pTrayMgr = new OgreBites::SdkTrayManager("AOFTrayMgr", m_pRenderWnd, m_pMouse, 0);
+    OgreBites::InputContext inputContext;
+    inputContext.mMouse = m_pMouse;
+    inputContext.mKeyboard = m_pKeyboard;
+    m_pTrayMgr = new OgreBites::SdkTrayManager("AOFTrayMgr", m_pRenderWnd, inputContext, 0);
 
     m_pTimer = new Ogre::Timer();
     m_pTimer->reset();

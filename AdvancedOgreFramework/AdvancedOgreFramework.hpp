@@ -52,6 +52,7 @@ public:
 	OIS::Keyboard*				m_pKeyboard;
 	OIS::Mouse*					m_pMouse;
 
+    Ogre::OverlaySystem*        m_pOverlaySystem;
     OgreBites::SdkTrayManager*	m_pTrayMgr;
 
 private:
