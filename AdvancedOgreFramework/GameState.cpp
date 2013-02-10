@@ -30,6 +30,8 @@ void GameState::enter()
     m_pSceneMgr = OgreFramework::getSingletonPtr()->m_pRoot->createSceneManager(ST_GENERIC, "GameSceneMgr");
     m_pSceneMgr->setAmbientLight(Ogre::ColourValue(0.7f, 0.7f, 0.7f));
 
+    m_pSceneMgr->addRenderQueueListener(OgreFramework::getSingletonPtr()->m_pOverlaySystem);
+
     m_pRSQ = m_pSceneMgr->createRayQuery(Ray());
     m_pRSQ->setQueryMask(OGRE_HEAD_MASK);
 
