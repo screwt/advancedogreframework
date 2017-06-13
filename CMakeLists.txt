@@ -20,10 +20,13 @@ project(AdvancedOgreFramework)
 
 
 message("OGRE_HOME : $ENV{OGRE_HOME}")
+message("OIS_HOME : $ENV{OIS_HOME}}")
+
 
  
 if(WIN32)
 	set(CMAKE_MODULE_PATH "$ENV{OGRE_HOME}/CMake/;${CMAKE_MODULE_PATH}")
+	
 endif(WIN32)
  
 if(UNIX)	
@@ -55,18 +58,9 @@ set(CMAKE_DEBUG_POSTFIX "_d")
  
 set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/dist")
  
-find_package(OGRE REQUIRED)
- 
-#if(NOT "${OGRE_VERSION_NAME}" STREQUAL "Cthugha")
-#  message(SEND_ERROR "You need Ogre 1.7 Cthugha to build this.")
-#endif()
- 
+find_package(OGRE REQUIRED) 
 find_package(OIS REQUIRED)
- 
-if(NOT OIS_FOUND)
-	message(SEND_ERROR "Failed to find OIS.")
-endif()
- 
+  
 # Find Boost
 if (NOT OGRE_BUILD_PLATFORM_IPHONE)
 	if (WIN32 OR APPLE)
@@ -93,9 +87,15 @@ if (NOT OGRE_BUILD_PLATFORM_IPHONE)
 	find_package(Boost QUIET)
  
 	# Set up referencing of Boost
-#	include_directories(${Boost_INCLUDE_DIR})
+	include_directories(${Boost_INCLUDE_DIR})
 #	add_definitions(-DBOOST_ALL_NO_LIB)
-#	set(OGRE_LIBRARIES ${OGRE_LIBRARIES} ${Boost_LIBRARIES})
+	message("Boost_LIBRARIES: ${Boost_LIBRARIES}")
+	message("COMPONENTS: ${COMPONENTS}")
+	message("OGRE_LIBRARIES: ${OGRE_LIBRARIES}")
+	message("OGRE_BOOST_COMPONENTS: ${OGRE_BOOST_COMPONENTS}")
+		
+	
+	set(OGRE_LIBRARIES ${OGRE_LIBRARIES} ${Boost_LIBRARIES})
 endif()
 
 
@@ -125,8 +125,15 @@ set_target_properties(OgreApp PROPERTIES DEBUG_POSTFIX _d)
 message("${OGRE_LIBRARIES}")
 
 message("Sources ${SRCS}")
+message("Boost_THREAD_LIBRARY: ${Boost_THREAD_LIBRARY}")
 
-target_link_libraries(OgreApp ${OGRE_LIBRARIES} ${OIS_LIBRARIES} ${OGRE_Overlay_LIBRARIES}) 
+target_link_libraries(OgreApp 	${OGRE_LIBRARIES} 
+								${OIS_LIBRARIES} 
+								${OGRE_Overlay_LIBRARIES} 
+								${Boost_THREAD_LIBRARY} 
+								${Boost_SYSTEM_LIBRARY} 
+								${Boost_DATE_TIME_LIBRARY}
+								${Boost_CHRONO_LIBRARY}) 
  
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/dist/bin)
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/dist/media)
