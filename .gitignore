@@ -10,3 +10,4 @@ OvhApi.py
 \#*.*\#
 *.*~
 .hg
+/build

@@ -17,6 +17,10 @@
 cmake_minimum_required(VERSION 2.6)
  
 project(AdvancedOgreFramework)
+
+
+message("OGRE_HOME : $ENV{OGRE_HOME}")
+
  
 if(WIN32)
 	set(CMAKE_MODULE_PATH "$ENV{OGRE_HOME}/CMake/;${CMAKE_MODULE_PATH}")
@@ -32,6 +36,9 @@ if(UNIX)
 
 	  set(CMAKE_MODULE_PATH "/usr/lib/OGRE/cmake/;${CMAKE_MODULE_PATH}")
 	  set(OGRE_SAMPLES_INCLUDEPATH "/usr/share/OGRE/samples/Common/include/") # Otherwise, this one
+
+	elseif(EXISTS "$ENV{OGRE_HOME}/lib/OGRE/cmake")
+	  	set(CMAKE_MODULE_PATH "$ENV{OGRE_HOME}/lib/OGRE/cmake/;${CMAKE_MODULE_PATH}")
 
 	else ()
 	  message(SEND_ERROR "Failed to find module path.")
@@ -95,31 +102,29 @@ endif()
 #-- add ogre terrain
 set(OGRE_LIBRARIES ${OGRE_LIBRARIES} ${OGRE_Terrain_LIBRARIES})
  
-set(HDRS
-	./include/DotSceneLoader.h
-	./include/BaseApplication.h
-	./include/TutorialApplication.h
+file(GLOB SRCS
+	./src/*.cpp
 )
- 
-set(SRCS
-	./src/DotSceneLoader.cpp
-	./src/BaseApplication.cpp
-	./src/TutorialApplication.cpp
+
+file(GLOB HDRS
+	./include/*.hpp
 )
- 
+
 include_directories(
-	"./include"
+	./include
 	${OIS_INCLUDE_DIRS}
 	${OGRE_INCLUDE_DIRS}
 	${OGRE_SAMPLES_INCLUDEPATH}
 	${OGRE_Overlay_INCLUDE_DIRS}
 )
  
-add_executable(OgreApp WIN32 ${HDRS} ${SRCS})
+add_executable(OgreApp WIN32 ${SRCS})
  
 set_target_properties(OgreApp PROPERTIES DEBUG_POSTFIX _d)
 
 message("${OGRE_LIBRARIES}")
+
+message("Sources ${SRCS}")
 
 target_link_libraries(OgreApp ${OGRE_LIBRARIES} ${OIS_LIBRARIES} ${OGRE_Overlay_LIBRARIES}) 
  

@@ -16,6 +16,10 @@
 #include <OgreSceneManager.h>
 #include <OgreRenderWindow.h>
 #include <OgreConfigFile.h>
+#include <OgreFrameListener.h>
+#include <OgreSceneNode.h>
+#include <OgreTechnique.h>
+#include <OgreTextureManager.h>
 
 #include <OISEvents.h>
 #include <OISInputManager.h>

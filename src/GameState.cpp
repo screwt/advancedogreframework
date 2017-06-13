@@ -180,7 +180,7 @@ bool GameState::keyReleased(const OIS::KeyEvent &keyEventRef)
 
 bool GameState::mouseMoved(const OIS::MouseEvent &evt)
 {
-    if(OgreFramework::getSingletonPtr()->m_pTrayMgr->injectMouseMove(evt)) return true;
+    if(OgreFramework::getSingletonPtr()->m_pTrayMgr->injectPointerMove(evt)) return true;
 
     if(m_bRMouseDown)
     {
@@ -195,7 +195,7 @@ bool GameState::mouseMoved(const OIS::MouseEvent &evt)
 
 bool GameState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
 {
-    if(OgreFramework::getSingletonPtr()->m_pTrayMgr->injectMouseDown(evt, id)) return true;
+    if(OgreFramework::getSingletonPtr()->m_pTrayMgr->injectPointerDown(evt, id)) return true;
 
     if(id == OIS::MB_Left)
     {
@@ -214,7 +214,7 @@ bool GameState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
 
 bool GameState::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
 {
-    if(OgreFramework::getSingletonPtr()->m_pTrayMgr->injectMouseUp(evt, id)) return true;
+    if(OgreFramework::getSingletonPtr()->m_pTrayMgr->injectPointerUp(evt, id)) return true;
 
     if(id == OIS::MB_Left)
     {
