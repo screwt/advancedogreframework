@@ -117,12 +117,15 @@ include_directories(
 	${OGRE_SAMPLES_INCLUDEPATH}
 	${OGRE_Overlay_INCLUDE_DIRS}
 )
- 
+
+
+message("Ogre include: ${OGRE_INCLUDE_DIRS}")
+
 add_executable(OgreApp WIN32 ${SRCS})
  
 set_target_properties(OgreApp PROPERTIES DEBUG_POSTFIX _d)
 
-message("${OGRE_LIBRARIES}")
+message("Libraries: ${OGRE_LIBRARIES}")
 
 message("Sources ${SRCS}")
 

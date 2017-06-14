@@ -20,6 +20,7 @@
 #include <OgreSceneNode.h>
 #include <OgreTechnique.h>
 #include <OgreTextureManager.h>
+#include <OgreOverlaySystem.h>
 
 #include <OISEvents.h>
 #include <OISInputManager.h>
@@ -56,7 +57,7 @@ public:
 	OIS::Keyboard*				m_pKeyboard;
 	OIS::Mouse*					m_pMouse;
 
-    Ogre::OverlaySystem*        m_pOverlaySystem;
+  Ogre::v1::OverlaySystem*        m_pOverlaySystem;
     OgreBites::SdkTrayManager*	m_pTrayMgr;
 
 private:
